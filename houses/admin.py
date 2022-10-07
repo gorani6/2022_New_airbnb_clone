@@ -14,4 +14,3 @@ class HouseAdmin(admin.ModelAdmin):
     ]
 
     list_filter = ["price", "pets_allowed"]
-    search_fields = ["address"]

@@ -4,8 +4,7 @@ from .models import Room, Amenity
 @admin.register(Room)
 class RoomAdmin(admin.ModelAdmin):
     list_display = (
-        "name", "price", "kind", "owner", "created_at",
-        "updated_at",
+        "name", "price", "kind", "total_amenities", "owner", "created_at",
     )
 
     list_filter = (
@@ -19,6 +18,9 @@ class RoomAdmin(admin.ModelAdmin):
         
     )
     verbose_name_plural = "Amenities" #admin name 변경
+
+    def total_amenities(self, room):
+        return room.amenities.count()
 
 @admin.register(Amenity)
 class AmenityAdmin(admin.ModelAdmin):

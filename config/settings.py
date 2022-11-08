@@ -29,6 +29,10 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+TRIRD_PARTY_APPS = [
+    "rest_framework",
+]
+
 
 CUSTOM_APPS = [
     'users.apps.UsersConfig', 'rooms.apps.RoomsConfig', 'common.apps.CommonConfig',
@@ -48,7 +52,7 @@ SYSTEM_APPS = [
     
 ]
 
-INSTALLED_APPS = SYSTEM_APPS + CUSTOM_APPS
+INSTALLED_APPS = SYSTEM_APPS + TRIRD_PARTY_APPS + CUSTOM_APPS 
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

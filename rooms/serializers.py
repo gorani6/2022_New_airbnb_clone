@@ -33,6 +33,15 @@ class RoomDetailSerializer(serializers.ModelSerializer):
         request = self.context['request']
         return room.owner == request.user
 
+    def get_is_liked(self, room):
+        request = self.context["request"]
+        if request.user.is_authenticated:
+            return Wishlist.objects.filter(
+                user=request.user,
+                room__pk=room.pk,
+            ).exists()
+        return False
+
 
 
 class RoomListSerializer(serializers.ModelSerializer):
